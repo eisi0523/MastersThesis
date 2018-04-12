@@ -13,7 +13,16 @@ To address this current shortcoming a three-dimensional tunable loop-gap resonat
 
 \section{Resonant Enhancement of the MW field}
 
-Talk about (with calculations) how Q of the cavity affects field build up in resonator and how resonant enhancement can build strong MW field strengths.
+The LGR acts classically like an underdamped oscillator. It stores MWs within the confines of its geometrical structure by allowing the energy to oscillate back and forth between an electric and magnetic potential. At resonance ($\omega_0$) the ratio of magnetic energy to electric energy is 1. The time $\tau_ring$ the energy can oscillate before its power is reduced by a factor of 1/e is characterized by a dimensionless quantity called the Q-factor. It's defined by the following ratio
+\begin{equation}
+Q = \omega_0 \frac{Stored Energy}{Power Loss}.
+\end{equation}
+If the resonator is therefore continuously fed by an external power source an enhancement of the stored energy takes place that is proportional to both the current supplied and the Q-factor of the cavity. The magnitude of the magnetic flux within the center cavity (for a cylindrical resonator) is then given by
+\begin{equation}
+|B_1| \approx  \frac{\upmu_0}{2 r} \cdot I \cdot \sqrt{Q},
+\end{equation}
+where $\upmu_0$ is the vacuum permeability, $I$ is the supplied current, and $r$ is the cylinder radius. It's therefore clear that a resonant enhancement of the magnetic field amplitude is induced which is proportional to the square root of the Q-factor. 
+
 
 \section{Model}
 
@@ -25,13 +34,15 @@ Theoretical framework for analyzing LGR for $m$ loops and $n$ gaps including fie
 
 \subsection{Field based solutions}
 
-\subsection{Coupling}
+Theory giving solutions of LGR using bessel functions
+
+\subsection{Coupling} \label{coupling}
 
 Theory of coupling (mutual inductance, capcitance, etc)
 
 \section{LGR Design}
 
-Due to the loop gap resonator's existence since the early 20th century \cite{collins1948microwave} it has seen many variations and modifications all designed with particular applications in mind. Figure \ref{} shows the cross section of a variety of LGRs including rising-sun, vane, slot, and hole-and-slot type resonators. EPR experiments at low frequencies (2-4 GHz) quickly adopted the LGR as opposed to more traditional TE\textsubscript{102} type cavities because of the LGRs smaller size relative to the frequency of excitation. At 3 GHz the side length of the TE\textsubscript{102} cavity must be at least 5 cm which reduces drastically the cavity filling factor--a parameter necessary for the sensitivity of an EPR signal. Since many aspects of EPR spectroscopy are mirrored in NV magnetometry (requirement of homogeneous and strong microwave signals, frequency of operation, etc.) we selected to design a hole-and-slot type resonator found in many EPR applications \cite{}.  
+Due to the loop gap resonator's existence since the early 20th century \cite{collins1948microwave} it has seen many variations and modifications all designed with particular applications in mind. Figure \ref{LGR_variation} shows the cross section of a variety of LGRs including rising-sun, vane, slot, and hole-and-slot type resonators. EPR experiments at low frequencies (2-4 GHz) quickly adopted the LGR as opposed to more traditional TE\textsubscript{102} type cavities because of the LGRs smaller size relative to the frequency of excitation. At 3 GHz the side length of the TE\textsubscript{102} cavity must be at least 5 cm which reduces drastically the cavity filling factor--a parameter necessary for the sensitivity of an EPR signal. Since many aspects of EPR spectroscopy are mirrored in NV magnetometry (requirement of homogeneous and strong microwave signals, frequency of operation, etc.) we selected to design a hole-and-slot type resonator found in many EPR applications \cite{}.  
 \vspace{5mm}
 \begin{figure}[h!]
 \centering
@@ -74,33 +85,25 @@ In practice, the central loop diameter is set to $\sim 5-10 $ mm, corresponding 
 
 The LGR in this work therefore consists of a central loop with radius $r_c = 4$ mm surrounded by four symmetrically arranged outer loops of radius $r_o = 3$ mm as shown in Figure \ref{LGR_drawing} (b). The outer loops return magnetic flux to the central loop and therefore oscillate antisymmetrically with the central loop ($\pi$ out of phase). The side walls of the capacitive gaps are separated by $d = 254$ $\upmu$m. With these dimensions, using equations \ref{induct} and \ref{cap}, $L = 8.7$ nH and $C = 0.17$ pF, resulting in an expected resonant frequency for the naked air-gapped LGR of $f_0 = 4.1$ GHz, approximately 1.2 GHz above the NV resonance frequencies.
 
-An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}.
+An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}. As mentioned above, for this mode the center loop oscillates $\pi$ radians out of phase with the outer loops. For the air-gapped resonator, HFSS returns a real eigenfrequency at 4.57 GHz (depicted in Figure \ref{LGR_Eigen} ) 
 
-\begin{figure}[t!]
+\begin{figure}[h!]
 \centering
-\includegraphics[width = \textwidth]{STANDIN.pdf}  
-\caption{\textbf{Eigenfrequency solution to LGR} \textbf{a)} \textcolor{red} {STANDIN. PLEASE REPLACE}}
+\includegraphics[width = \textwidth]{Eigen_Res.pdf}  
+\caption{\textbf{Eigenfrequency solution to LGR} Eigenfrequency solution for TE\textsubscript{10} mode. The outer loops are oscillating $pi$ radians out of phase with center loop}
 \label{LGR_Eigen}
 \end{figure}
 
 
+\section{Tuning} \label{tuning}
 
-
-
-
-
-
-%need to hit on: why 4 loops and 4 gaps, why titanium?
-
-%Eigenfrequency simulations in HFSS for LGR structure. 
-
-%(Real) Mode spectrum 
-
-%etc
-
-%discussion of manufacturing using wire EDM, materials used, milling, etc.
+Talk about tuning the LGR using sapphire shims; why use sapphirie shims? etc etc etc
 
 \section{Excitation Design}
+
+To couple MW power into the LGR we utilized two separate methods, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{} (a)] can be used to minimize the blocking of optical access to the central loop. Using this method, resonator coupling (described in section \ref{coupling}) is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{} (b)].  
+
+
 
 Discussion with images of coupling using shorted coax loop.
 
@@ -110,11 +113,22 @@ Discussion of split ring exciter antenna and design outline of feedline and balu
 
 center loop coupling with split ring resonator. Sonnet program design or split loop (snap shots from program and S11 etc) 
 
-\section{Tuning} \label{tuning}
+\begin{figure}[t!]
+\centering
+\includegraphics[width = \textwidth]{STANDIN.pdf}  
+\caption{\textbf{Eigenfrequency solution to LGR} \textbf{a)} \textcolor{red} {STANDIN. PLEASE REPLACE}}
+\label{LGR_Eigen}
+\end{figure}
 
-Talk about tuning the LGR using sapphire shims; why use sapphirie shims? etc etc etc
 
 \section{Matching}
+
+As mentioned above, for lateral coupling using a coaxial loop the LGR can be quickly matched to the feedline by varying the distance $z$ between the loop and the resonator. 
+
+
+
+
+
 
 Talk about matching using coupling parameter and etc. (quick overview of matching using mathematical framework).
 
@@ -125,6 +139,14 @@ Talk about Balun design (w/ sonnet)
 Talk about board design (w/ sonnet)
 
 Talk about additional matching using stub tuner.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width = \textwidth]{STANDIN.pdf}  
+\caption{\textbf{Eigenfrequency solution to LGR} \textbf{a)} \textcolor{red} {STANDIN. PLEASE REPLACE}}
+\label{LGR_Eigen}
+\end{figure}
 
 
 
