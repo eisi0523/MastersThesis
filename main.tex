@@ -42,10 +42,14 @@
 \newcommand{\pra}{Physical Review A}
 \newcommand{\prb}{Physical Review B} 
 
-
-
 % For hyperlinks
 \usepackage{hyperref} % For hyperlinks
+\hypersetup{
+ colorlinks = true, % colors links instead of ugly boxes
+ urlcolor = blue, % color for external hyperlinks
+ linkcolor = red, % color for internal links
+ citecolor = red % color for citations
+}
 \usepackage{url}
 \usepackage[normalem]{ulem}
 %\usepackage[hyperref=true,doi=false,url=false,isbn=false,backend=bibtex,style=nature]{biblatex}
@@ -54,8 +58,6 @@
 % For images and Figures
 \usepackage{graphicx}
 \graphicspath{{./Images/PDFs/}} % Sets the path to the images as a subdirectory included in the same directory as the .tex file. 
-
-%\usepackage[hyperref=true,doi=false,url=false,isbn=false,backend=bibtex,style=nature]{biblatex}
 
 %% These have been added at the request of the MIT Libraries, because
 %% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
@@ -72,6 +74,18 @@
 \def\all{all}
 \ifx\files\all \typeout{Including all files.} \else %\typeout{Including only \files.} \includeonly{\files} \fi
 
+% Formatting
+\raggedbottom
+
+% Extra colors
+
+%\definecolor{cerisepink}{rgb}{0.93, 0.23, 0.51}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+%\definecolor{mediumelectricblue}{rgb}{0.01, 0.31, 0.59}
+%\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{deepmagenta}{rgb}{0.8, 0.0, 0.8}
+\definecolor{dolla-bill}{rgb}{0.52, 0.73, 0.4}
+
 \begin{document}
 
 \include{cover}
@@ -84,9 +98,10 @@
 \include{chap1}
 \include{chap2}
 \include{chap3}
+\include{chap4}
 \appendix
 \include{appa}
-\include{appb}
+%\include{appb}
 \include{biblio}
 \end{document}
 
