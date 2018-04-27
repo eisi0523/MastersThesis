@@ -35,7 +35,7 @@ Using equation \ref{eqn33} and the bandwidth and center frequency extracted from
 
 The $B_1$ field distribution in the center loop of the LGR was simulated using the full-wave electromagnetics simulation suite ANSYS HFSS. The simulation includes the 200 $\upmu$m dielectric shims and the full exciter circuit depicted in Figures \ref{LGR_Exciter} and \ref{LGR_drawing}. The solution type was set to "driven modal" since the exciter board has a single trace interconnect and thus requires the solution of TE and TM propagation modes. Figure \ref{LGR_simulated} shows the $B_1$ distribution computed by HFSS at an input power of 42 dBm. The exciter board (which extends over the LGR center loop along the line $x = y$ in the figure) clearly imparts a small perturbation on the otherwise radially symmetric field. The simulation predicts $B_1 \approx 4.8$ gauss at the LGR center and a maximum field of $B_1 \approx 5.4$ gauss at the perimeter. Two metrics are used to quantitatively characterize 2D regions of homogeneity , the fractional root-mean-square inhomogeneity $\sigma_{rms}$ calculated as 
 \begin{equation}\label{sigma_rms}
-\sigma_{rms} = \sqrt{\frac{\Sigma_{i = 1}^N(B_{1,i}-B_{2,i})^2}{N}} \cdot \mu_N^{-1},
+\sigma_{rms} = \sqrt{\frac{\Sigma_{i = 1}^N|B_{1,i}|^2}{N}} \cdot \mu_N^{-1},
 \end{equation}
 where $i$ is an index over all $B_1$ field values in the region, $N$ is the total number of values, and $\mu_N$ is the mean of all $N$ values, and the fractional peak-to-peak variation $\sigma_{pp}$ calculated as
 \begin{equation}\label{sigma_pp}
