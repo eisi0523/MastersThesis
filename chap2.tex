@@ -31,7 +31,7 @@ The following sections build a model of the LGR both as an equivalent circuit an
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.55]{LGR_geometricalParams.pdf}  
+\includegraphics[scale = 0.7]{LGR_geometricalParams.pdf}  
 \caption{\textbf{LGR dimensions} Geometrical parameters of LGR used in sections \ref{circuit}, \ref{fields} and \ref{coupling}}
 \label{LGR_geometry1}
 \end{figure}
@@ -41,7 +41,7 @@ The following sections build a model of the LGR both as an equivalent circuit an
 
 \begin{figure}[t!]
 \centering
-\includegraphics[scale = 0.9]{circuit_drawing.pdf}  
+\includegraphics[scale = 1]{circuit_drawing.pdf}  
 \caption{\textbf{LGR equivalent circuit diagram} Diagram showing equivalent inductance and capacitance of LGR and their connections.}
 \label{circuitdiagram}
 \end{figure}
@@ -96,7 +96,7 @@ Due to the loop gap resonator's existence since the early 20th century \cite{col
 
 \subsection{LGR}
 
-A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ coupled LC resonators oscillating in tandem at a target resonant frequency \cite{wood1984loop}. Circulating currents around the central and outer loops create a total inductance \ref{inductance}, and charge at the gaps creates the total capacitance \ref{capacitance} as found in section \ref{circuit}. In practice, the central loop diameter is set to $\sim 5-10 $ mm, corresponding to the typical size of a diamond plate. The outer loop diameters are chosen to match the inner diameters within a small factor to ensure return flux is captured and does not extend into the annular region around the LGR \cite{}. Since the outer and inner loops set the effective inductance of the resonator, the gap area $A = h \times W$ is constrained by the dual LGR design objectives of (i) maintaining optical accessibility, which limits the thickness of the device, and (ii) bounding $f_0$ above the target resonant frequency in order to allow for further tuning vie dielectric shims (discussed in section \ref{tuning}). Additionally, while increasing the number $n$ of loops and gaps can improve $B_1$ uniformity \cite{piasecki1993field} and lower the LGR's resonant frequency, this approach results in a denser mode spectrum \cite{froncisz1982loop} and increases the likelihood of cross-mode excitations deleteriously altering the field distribution within the central loop. As a compromise, the design employs $n=4$ outer loops [Fig. \ref{LGR_drawing} (a)] allowing for sufficient uniformity while locating the closest eigenmode more than 1.5 GHz below the TE\textsubscript{10} eigenmode [Fig \ref{}].  
+A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ coupled LC resonators oscillating in tandem at a target resonant frequency \cite{wood1984loop}. Circulating currents around the central and outer loops create a total inductance \ref{inductance}, and charge at the gaps creates the total capacitance \ref{capacitance} as found in section \ref{circuit}. In practice, the central loop diameter is set to $\sim 5-10 $ mm, corresponding to the typical size of a diamond plate. The outer loop diameters are chosen to match the inner diameters within a small factor to ensure return flux is captured and does not extend into the annular region around the LGR \cite{}. Since the outer and inner loops set the effective inductance of the resonator, the gap area $A = h \times W$ is constrained by the dual LGR design objectives of (i) maintaining optical accessibility, which limits the thickness of the device, and (ii) bounding $f_0$ above the target resonant frequency in order to allow for further tuning vie dielectric shims (discussed in section \ref{tuning}). Additionally, while increasing the number $n$ of loops and gaps can improve $B_1$ uniformity \cite{piasecki1993field} and lower the LGR's resonant frequency, this approach results in a denser mode spectrum \cite{froncisz1982loop} and increases the likelihood of cross-mode excitations deleteriously altering the field distribution within the central loop. As a compromise, the design employs $n=4$ outer loops [Fig. \ref{LGR_drawing} (a)] allowing for sufficient uniformity while locating the closest eigenmode more than 1.5 GHz below the TE\textsubscript{10} eigenmode [Table \ref{eigenmodetable}].  
 
 \begin{figure}[b!]
 \centering
@@ -105,11 +105,20 @@ A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ cou
 \label{LGR_drawing}
 \end{figure}
 
-%\begin{tabular}{|c|c|}
+\begin{table}
+\label{eigenmodetable}
+\centering
+   \begin{tabular}{llll} \hline Mode & freq. sim. \newline (GHz) & freq. meas. \newline (GHz) & figure \\
+\hline 1 ($TE_{10}$) & \centering 4.6 & \centering 4.66 & \parbox[c]{1em}{\includegraphics[width=1in]{Eigenmode1.pdf}} \\
+2 & \centering 2.3 & \centering 2.53 & \parbox[c]{1em}{\includegraphics[width=1in]{Eigenmode2.pdf}} \\
+3 & \centering 2.33 & \centering 2.51 & \parbox[c]{1em}{\includegraphics[width=1in]{Eigenmode4.pdf}} \\
+4 & \centering $\sim 2$ & \centering 1 & \parbox[c]{1em}{\includegraphics[width=1in]{Eigenmode3.pdf}} \\
+\hline
+\end{tabular}
+\caption{Some modes the LGR supports and their measured vs. simulated frequencies. Many separate modes are degenerate due to their symmetrical nature. Additionally }
+\end{table}
 
-%\end{tabular}
-
-The LGR in this work therefore consists of a central loop with radius $r_c = 4$ mm surrounded by four symmetrically arranged outer loops of radius $r_o = 3$ mm as shown in Figure \ref{LGR_drawing} (b). The outer loops return magnetic flux to the central loop and therefore oscillate antisymmetrically with the central loop ($\pi$ out of phase). The side walls of the capacitive gaps are separated by $d = 254$ $\upmu$m. With these dimensions, using equations \ref{indcap}, \ref{inductance}, and \ref{capacitance} yield $L = 8.7$ nH and $C = 0.17$ pF, resulting in an expected resonant frequency for the naked air-gapped LGR of $f_0 = 4.1$ GHz, approximately 1.2 GHz above the NV resonance frequencies. An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}. As mentioned above, for this mode the center loop oscillates $\pi$ radians out of phase with the outer loops. For the air-gapped resonator, HFSS returns a real eigenfrequency at 4.57 GHz (depicted in Figure \ref{LGR_Eigen}) 
+The LGR in this work therefore consists of a central loop with radius $r_c = 4$ mm surrounded by four symmetrically arranged outer loops of radius $r_o = 3$ mm as shown in Figure \ref{LGR_drawing} (b). The outer loops return magnetic flux to the central loop and therefore oscillate antisymmetrically with the central loop ($\pi$ out of phase). The side walls of the capacitive gaps are separated by $d = 254$ $\upmu$m. With these dimensions, using equations \ref{indcap}, \ref{inductance}, and \ref{capacitance} yield $L = 8.7$ nH and $C = 0.17$ pF, resulting in an expected resonant frequency for the naked air-gapped LGR of $f_0 = 4.1$ GHz, approximately 1.2 GHz above the NV resonance frequencies. An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}. As mentioned above, for this mode the center loop oscillates $\pi$ radians out of phase with the outer loops. For the air-gapped resonator, HFSS returns a real eigenfrequency at 4.57 GHz (depicted in Figure \ref{LGR_Eigen} and Table \ref{eigenmodetable}) 
 
 The LGR is fabricated via wire electron discharge machining, which is well-suited for producing the tight tolerances and vertical side walls required for the narrow $d = 254 \upmu$m capacitive gaps. A titanium alloy (Ti-6Al-4V) was chosen as the resonator cavity material. The lower conductivity of this alloy compared to that of copper ($\sigma_{Ti} = 5.8 \times 10^{5}$ S/m vs. $\sigma_c = 59 \times 10^6$ S/m) allows for a broader resonance with a 3dB bandwidth $\Delta_{3dB} = 80$ MHz, sufficient to address all eight NV resonances for bias magnetic fields $B_0$ up to $\sim 20$ gauss. This 80 MHz bandwidth corresponds to a loaded quality factor $Q_L \equiv f_0/\Delta_{3dB} \approx 36$ when the LGR
 is critically coupled to the driving source (see section \ref{quality}). The LGR may be optionally fit with a radial access hole (for laser excitation of the NV ensemble) and three \# 2-56 mounting holes, which affix the LGR to an exciter antenna, discussed next.
@@ -131,7 +140,7 @@ available in semiconductor grade 50.8 mm diameter wafers, can be cut on standard
 
 
 
-\subsection{Excitation Design}
+\subsection{Excitation Design} \label{excitation}
 
 To couple MW power into the LGR we utilized two separate methods, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{LGR_Lateral} (a)] can be used to minimize the blocking of optical access to the central loop \cite{koskinen1992the}. Using this method, resonator coupling (described in section \ref{coupling}) is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{LGR_Lateral} (b)]. Note that changing the coupling loop distance affects the mutual inductance between the shorted-loop and the resonator. As an undesired consequence, the resonant frequency of the total device shifts away from the frequency it was initially tuned to. A simple optimization process however, that can often be accomplished by hand, between shim placement and loop-LGR distance can lead to the desired coupling at the targeted frequency.
 
