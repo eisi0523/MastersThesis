@@ -32,12 +32,12 @@ The following sections build a model of the LGR both as an equivalent circuit an
 \begin{figure}[h!]
 \centering
 \includegraphics[scale = 0.7]{LGR_geometricalParams.pdf}  
-\caption{\textbf{LGR dimensions} Geometrical parameters of LGR used in sections \ref{circuit}, \ref{fields} and \ref{coupling}}
+\caption{\textbf{LGR dimensions} Geometrical parameters of LGR used in sections \ref{circuit} and \ref{fields}}
 \label{LGR_geometry1}
 \end{figure}
 
 
-\subsection{Resonant frequency using equivalent circuit} \label{circuit}
+\subsection{Equivalent circuit picture} \label{circuit}
 
 \begin{figure}[t!]
 \centering
@@ -66,21 +66,58 @@ f_0 = \frac{1}{2 \pi \sqrt{LC}}
 
 \subsection{Solution to Maxwell's equations} \label{fields}
 
-The full derivation of the solutions to Maxwell's equations for an $n$ gap LGR can be found in reference \cite{piasecki1993field}. However, this chapter is intended to give a brief overview of the solutions. In general, Maxwell's equations for the LGR center cavity can be solved by using Bessel and Neumann functions which are generally found to be the solutions to finite length cylindrical waveguides \cite{}. Neumann functions however are singular at the origin and therefore only Bessel functions (of the first kind) need to be considered. The full solution then takes the form
-\begin{equation}
-H_z^{(p)} = \mathcal{J}_p(k\rho) e^{i p \phi}.
+The full derivation of the solutions to Maxwell's equations for an $n$ gap LGR can be found in reference \cite{piasecki1993field, mehdizadeh1989Electromagnetic, mehdizadeh1983investigation}. However, this section is intended to give a brief overview of the solutions, how they are attained, and how they can be used to estimate the field homogeneity for an $n$ gap LGR. In general, Maxwell's equations for the LGR center cavity can be solved by using Bessel and Neumann functions which are generally found to be the solutions to finite length cylindrical waveguides \cite{}. Neumann functions however are singular at the origin and therefore only Bessel functions (of the first kind) need to be considered. The magnetic field solution then takes the form
+\begin{equation} \label{solution1}
+B_z^{(p)} = \mathcal{J}_p(k\rho) e^{i p \phi}.
 \end{equation}
-Where we are operating in cylindrical coordinates and $\mathcal{J}_p$ is the $p^{th}$ order Bessel function and $k = \omega \sqrt{\mu_0\epsilon_0}$. If we assume that the field in the center is fully directed in $z$ then the boundary condition for the magnetic field becomes
-\begin{equation}
-H_z = H_z(\rho,\phi)e^{i\omega t}, \quad H_{\rho} = H_{\phi} = 0.  
+Where we are operating in cylindrical coordinates and $\mathcal{J}_p$ is the $p^{th}$ order Bessel function and $k = \omega \sqrt{\mu_0\epsilon_0}$. If we assume that the field in the center loop is fully directed in $z$ then the magnetic field is simply
+\begin{equation}\label{boundary1}
+B_z = B_z(\rho,\phi)e^{i\omega t}, \quad B_{\rho} = B_{\phi} = 0.
 \end{equation} 
-Solving Maxwell's equations then yields
+The periodic boundary condition for the electric field is
+\begin{equation}\label{maxwell1}
+\begin{split}
+E_\phi = 0 \quad \text{at} \quad \rho = r_c \\
+& \text{for} \quad 2N\pi/n + \delta/2 \leqslant \phi \leqslant 2(N+1)\pi/n-\delta/2,
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{maxwell2}
+\begin{split}
+E_\phi = E \quad \text{at} \quad \rho = r_c \\
+& \text{for} \quad 2N\pi/n - \delta/2 \leqslant \phi \leqslant 2(N+1)\pi/n+\delta/2,
+\end{split}
+\end{equation}
+where $N$ is an integer, $n$ is the number of gaps, and $\delta$ is the arc angle that is swept out by the capacitive gap, in radians. Additionally we know from Maxwell's equations that
+\begin{equation}\label{boundary2}
+E_{\rho} = -i\frac{c \mu_0}{k \rho}\frac{\partial B_z}{\partial \phi},
+\end{equation}
+\begin{equation}\label{boundary3}
+E_{\phi} =  i \frac{ c \mu_0}{k}\frac{\partial B_z}{\partial \rho}.
+\end{equation}
+Using equation \ref{solution1} in \ref{boundary2} and \ref{boundary3} and solving for the appropriate Bessel functions using the boundary conditions \ref{maxwell1} and \ref{maxwell2} yields, for the magnetic field only,
+\begin{equation}
+|B_z(\rho,\phi)| = - c \epsilon\mu_0 \frac{n E \delta}{2\pi} \times \left(\frac{\mathcal{J}_0(k\rho)}{\mathcal{J}_0(k r_c)} + 2 \sum\limits_{p = 1}^{\infty} \frac{\mathcal{J}_{np}(k \rho)}{\mathcal{J}_{n p} (k r_c)} \frac{sin(np\delta/2)}{np\delta/2}cos(np\phi)\right),
+\end{equation}
+Where $E$ is the maximum field contained in the capacitive gap [Figure \ref{LGR_Electric}], and $\epsilon = \epsilon_r\epsilon_0$. In this case $\epsilon_r$ is given by the shim material used to tune the resonator (assuming it fully spans the width of the gap). To get an estimate of the field deviation between the maximum and minimum points we should examine the center and boundary cases (ie. $\rho = r_c$ and $\rho = 0$). At the cavity center we find,
+\begin{equation} \label{fieldcenter}
+|B_z(0,0)| \approx c \epsilon\mu_0 \frac{nE\delta}{\pi k r_c}
+\end{equation}
+and at the cavity sidewalls (choosing $\phi = 0$ for convenience),
+\begin{equation}
+|B_z(r_c,0)| \approx -c\epsilon\mu_0 \frac{nE \delta}{\pi} \left(-\frac{1}{k r_c}+ \frac{k r_c}{n}(1-\text{ln} n\delta/2)\right).
+\end{equation}
+To quantify the inhomogeneity we use the peak to peak variation $\sigma_{pp}$ defined as,
+\begin{equation} \label{homogeneity}
+\begin{split}
+\sigma_{pp} = 2\frac{|B_z(0,0)| - |B_z(r_c,0)|}{|B_z(0,0)| + |B_z(r_c,0)|} \\
+& \approx 2\frac{(kr_c)^2}{n}(1-\text{ln}n\delta/2)
+\end{split}
+\end{equation}
+For the LGR used in this study (introduced and described in more detail in the sections to come) we can calculate $\sigma_{pp} \approx 8.9\%$ across the entire center loop when excited at 2.87 GHz. We will see in sections \ref{simField} and \ref{field} that this estimate is too low. This is likely due to the fact that the model described above neglects fringing field effects and thus assumes that the electric field has no axial variation and that the magnetic field is perfectly polarized in the z-direction. Furthermore, using equation \ref{fieldcenter} and the electric field information contained in figure \ref{LGR_Electric} we calculate the estimated field strength in the cavity center to be $B_z(0,0) \approx 2.2$ gauss which, again, is too low an estimate. 
+%\subsection{Coupling} \label{coupling}
 
-
-
-\subsection{Coupling} \label{coupling}
-
-Theory of coupling (mutual inductance, capcitance, etc)
+%Theory of coupling (mutual inductance, capcitance, etc)
 
 \section{LGR Design} \label{LGRDesignSection}
 
@@ -96,7 +133,7 @@ Due to the loop gap resonator's existence since the early 20th century \cite{col
 
 \subsection{LGR}
 
-A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ coupled LC resonators oscillating in tandem at a target resonant frequency \cite{wood1984loop}. Circulating currents around the central and outer loops create a total inductance \ref{inductance}, and charge at the gaps creates the total capacitance \ref{capacitance} as found in section \ref{circuit}. In practice, the central loop diameter is set to $\sim 5-10 $ mm, corresponding to the typical size of a diamond plate. The outer loop diameters are chosen to match the inner diameters within a small factor to ensure return flux is captured and does not extend into the annular region around the LGR \cite{}. Since the outer and inner loops set the effective inductance of the resonator, the gap area $A = h \times W$ is constrained by the dual LGR design objectives of (i) maintaining optical accessibility, which limits the thickness of the device, and (ii) bounding $f_0$ above the target resonant frequency in order to allow for further tuning vie dielectric shims (discussed in section \ref{tuning}). Additionally, while increasing the number $n$ of loops and gaps can improve $B_1$ uniformity \cite{piasecki1993field} and lower the LGR's resonant frequency, this approach results in a denser mode spectrum \cite{froncisz1982loop} and increases the likelihood of cross-mode excitations deleteriously altering the field distribution within the central loop. As a compromise, the design employs $n=4$ outer loops [Fig. \ref{LGR_drawing} (a)] allowing for sufficient uniformity while locating the closest eigenmode more than 1.5 GHz below the TE\textsubscript{10} eigenmode [Table \ref{eigenmodetable}].  
+A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ coupled LC resonators oscillating in tandem at a target resonant frequency \cite{wood1984loop}. Circulating currents around the central and outer loops create a total inductance \ref{inductance}, and charge at the gaps creates the total capacitance \ref{capacitance} as found in section \ref{circuit}. In practice, the central loop diameter is set to $\sim 5-10 $ mm, corresponding to the typical size of a diamond plate. The outer loop diameters are chosen to match the inner diameters within a small factor to ensure return flux is captured and does not extend into the annular region around the LGR \cite{}. Since the outer and inner loops set the effective inductance of the resonator, the gap area $A = h \times W$ is constrained by the dual LGR design objectives of (i) maintaining optical accessibility, which limits the thickness of the device, and (ii) bounding $f_0$ above the target resonant frequency in order to allow for further tuning vie dielectric shims (discussed in section \ref{tuning}). Additionally, while increasing the number $n$ of loops and gaps can improve $B_1$ uniformity (see equation \ref{homogeneity}) and lower the LGR's resonant frequency, this approach results in a denser mode spectrum \cite{froncisz1982loop} and increases the likelihood of cross-mode excitations deleteriously altering the field distribution within the central loop. As a compromise, the design employs $n=4$ outer loops [Fig. \ref{LGR_drawing} (a)] allowing for sufficient uniformity while locating the closest eigenmode more than 1.5 GHz below the TE\textsubscript{10} eigenmode [Table \ref{eigenmodetable}].  
 
 \begin{figure}[t!]
 \centering
@@ -125,7 +162,7 @@ is critically coupled to the driving source (see section \ref{quality}). The LGR
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.5]{Eigen_Res.pdf}  
+\includegraphics[scale = 0.6]{Eigen_Res.pdf}  
 \caption{\textbf{Eigenfrequency solution to LGR} TE\textsubscript{10} mode located at $f_0 \approx 4.6$ GHz. The outer loops are oscillating $pi$ radians out of phase with center loop.}
 \label{LGR_Eigen}
 \end{figure}
@@ -142,7 +179,7 @@ available in semiconductor grade 50.8 mm diameter wafers, can be cut on standard
 
 \subsection{Excitation Design} \label{excitation}
 
-To couple MW power into the LGR we utilized two separate methods, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{LGR_Lateral} (a)] can be used to minimize the blocking of optical access to the central loop \cite{koskinen1992the}. Using this method, resonator coupling (described in section \ref{coupling}) is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{LGR_Lateral} (b)]. Note that changing the coupling loop distance affects the mutual inductance between the shorted-loop and the resonator. As an undesired consequence, the resonant frequency of the total device shifts away from the frequency it was initially tuned to. A simple optimization process however, that can often be accomplished by hand, between shim placement and loop-LGR distance can lead to the desired coupling at the targeted frequency.
+To couple MW power into the LGR we utilized two separate methods, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{LGR_Lateral} (a)] can be used to minimize the blocking of optical access to the central loop \cite{koskinen1992the}. Using this method, resonator coupling is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{LGR_Lateral} (b)]. Note that changing the coupling loop distance affects the mutual inductance between the shorted-loop and the resonator. As an undesired consequence, the resonant frequency of the total device shifts away from the frequency it was initially tuned to. A simple optimization process however, that can often be accomplished by hand, between shim placement and loop-LGR distance can lead to the desired coupling at the targeted frequency.
 
 \begin{figure}[t!]
 \centering
