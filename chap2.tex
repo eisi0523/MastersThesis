@@ -17,11 +17,13 @@ The LGR acts classically like an underdamped oscillator. It stores MWs within th
 \begin{equation}
 Q = \omega_0 \frac{Stored Energy}{Power Loss}.
 \end{equation}
-If the resonator is therefore continuously fed by an external power source an enhancement of the stored energy takes place that is proportional to the Q-factor of the cavity. The magnitude of the magnetic flux within the center cavity (for a cylindrical resonator) is given by
-\begin{equation}
+If the resonator is therefore continuously fed by an external power source an enhancement of the stored energy occurs that is proportional to the Q-factor of the cavity. The magnitude of the magnetic flux within the center cavity (for a cylindrical resonator) is given by
+\begin{equation} \label{B1approx}
 |B_1| \approx  2\left[\frac{\upmu_0}{\omega V_r}\right]^{1/2} \cdot \sqrt{P_0} \cdot \sqrt{Q},
 \end{equation}
-where $\upmu_0$ is the vacuum permeability, $P_0$ is the power coupled to the resonator, $\omega$ is the angular frequency, and $V_r$ is the volume of the center loop. It's therefore clear that a resonant enhancement of the magnetic field amplitude is induced which is proportional to the square root of the Q-factor. 
+where $\upmu_0$ is the vacuum permeability, $P_0$ is the power coupled to the resonator, $\omega$ is the angular frequency, and $V_r$ is the volume of the center loop. Therefore, high Q's can aid in achieving strong magnetic fields within the oscillator cavity at limited power input. Other considerations are the drive frequency and cavity volume.
+
+%It's therefore clear that a resonant enhancement of the magnetic field amplitude is induced which is proportional to the square root of the Q-factor. 
 
 
 \section{Model}
@@ -46,19 +48,19 @@ The following sections build a model of the LGR both as an equivalent circuit an
 \label{circuitdiagram}
 \end{figure}
 
-The LGR can be modeled by an equivalent circuit in which the gaps behave like capacitors and the loops like inductors. It's important to note that such a picture neglects effects such as radiation losses or fringing fields that extend into space above and below the LGR. However these effects can be incorporated with considerable effort and are described in detail within the following references \cite{mehdizadeh1983Loop, rinard2005loopgap, wood1984loop}. For an $m$ loop and $n$ gapped LGR, the equivalent circuit is depicted in Figure \ref{circuitdiagram}. Using the variables given in Figure \ref{LGR_geometry1}, the charge at the gap walls creates a capacitance $C_1$, and circulating currents around each loop create an inductance $L_1$
+The LGR can be modeled by an equivalent circuit in which the gaps behave like capacitors and the loops like inductors. It's important to note that such a picture neglects effects such as radiation losses or fringing fields that extend into space above and below the LGR. However, these effects can be incorporated with considerable effort and are described in detail within the following references \cite{mehdizadeh1983Loop, rinard2005loopgap, wood1984loop}. For an $m$ loop and $n$ gapped LGR, the equivalent circuit is depicted in Figure \ref{circuitdiagram}. Using the variables given in Figure \ref{LGR_geometry1}, the charge at the gap walls creates a capacitance $C_1$, and circulating currents around each loop create an inductance $L_1$
 \begin{equation} \label{indcap}
 C_1 \approx \frac{\epsilon_r \epsilon_0 W h}{a}, \quad L_1 \approx \frac{\mu_0 \pi r_i^2}{h}, 
 \end{equation}
-where $r_i$ is the radius of either loop ($i \equiv o,c$). Using circuit analysis we can solve the diagram in Figure \ref{circuitdiagram} for the total capacitance, $C$,
+where $r_i$ is the radius of either loop ($i \equiv o,c$). Using circuit analysis and a simple approximation we can solve the diagram in Figure \ref{circuitdiagram} for the total capacitance, $C$,
 \begin{equation}\label{capacitance}
 C = \frac{C_1}{n},
 \end{equation} 
 and total inductance, $L$,
 \begin{equation}\label{inductance}
-L = \frac{n L_o L_i}{n L_o + L_i}.
+L \approx \frac{n L_o L_i}{n L_o + L_i}.
 \end{equation}
-The resonant frequency of the LGR is therefore given by 
+The resonant frequency of the LGR is then given by 
 \begin{equation}
 f_0 = \frac{1}{2 \pi \sqrt{LC}}
 \end{equation}
@@ -66,7 +68,7 @@ f_0 = \frac{1}{2 \pi \sqrt{LC}}
 
 \subsection{Solution to Maxwell's equations} \label{fields}
 
-The full derivation of the solutions to Maxwell's equations for an $n$ gap LGR can be found in references \cite{piasecki1993field, mehdizadeh1989Electromagnetic, mehdizadeh1983investigation}. However, this section is intended to give a brief overview of the solutions, how they are attained, and how they can be used to estimate the field homogeneity and strength for an $n$ gap LGR. In general, Maxwell's equations for the LGR center cavity can be solved by using Bessel and Neumann functions which are generally found to be the solutions to finite length cylindrical waveguides \cite{gardiol1985open}. Neumann functions however are singular at the origin and therefore only Bessel functions (of the first kind) need to be considered. The magnetic field solution then takes the form
+The full derivation of the solutions to Maxwell's equations for an $n$ gap LGR can be found in references \cite{piasecki1993field, mehdizadeh1989Electromagnetic, mehdizadeh1983investigation}. However, this section is intended to give a brief overview of the solutions, how they are attained, and how they can be used to estimate the field homogeneity and strength for an $n$ gap LGR. In general, Maxwell's equations for the LGR center cavity can be solved by using Bessel and Neumann functions which are found to be the solutions to finite length cylindrical waveguides \cite{gardiol1985open}. Neumann functions however are singular at the origin and therefore only Bessel functions (of the first kind) need to be considered. The magnetic field solution then takes the form
 \begin{equation} \label{solution1}
 B_z^{(p)} = \mathcal{J}_p(k\rho) e^{i p \phi}.
 \end{equation}
@@ -121,7 +123,7 @@ For the LGR used in this study (introduced and described in more detail in the s
 
 \section{LGR Design} \label{LGRDesignSection}
 
-Due to the loop gap resonator's existence since the early 20th century \cite{collins1948microwave} it has seen many variations and modifications all designed with particular applications in mind. Figure \ref{LGR_variation} shows the cross section of a variety of LGRs including rising-sun, vane, slot, and hole-and-slot type resonators. EPR experiments at low frequencies (2-4 GHz) quickly adopted the LGR as opposed to more traditional TE\textsubscript{102} type cavities because of the LGR's smaller size relative to the frequency of excitation. At 3 GHz the side length of the TE\textsubscript{102} cavity must be at least 5 cm which drastically reduces the cavity filling factor for small samples--a parameter necessary for the sensitivity of an EPR signal. Since many aspects of EPR spectroscopy are mirrored in NV magnetometry (requirement of homogeneous and strong microwave signals, frequency of operation, etc.) we selected to design a hole-and-slot type resonator. 
+Due to the loop gap resonator's usage in a variety of applications since the early 20th century \cite{collins1948microwave}, it has seen many variations and modifications. Figure \ref{LGR_variation} shows the cross section of a variety of LGRs including rising-sun, vane, slot, and hole-and-slot type resonators. EPR experiments at low frequencies (2-4 GHz) quickly adopted the LGR as opposed to more traditional TE\textsubscript{102} type cavities because of the LGR's smaller size relative to the frequency of excitation. At 3 GHz the side length of the TE\textsubscript{102} cavity must be at least 5 cm which drastically reduces the cavity filling factor for small samples--a parameter necessary for the sensitivity of an EPR signal. Since many aspects of EPR spectroscopy are mirrored in NV magnetometry (requirement of homogeneous and strong microwave signals, frequency of operation, etc.) we selected to design a hole-and-slot type resonator. 
 \vspace{5mm}
 \begin{figure}[t!]
 \centering
@@ -155,7 +157,7 @@ A standard hole-and-slot LGR with $n$ outer loops can be approximated as $n$ cou
 \caption{Some modes the LGR supports and their measured vs. simulated frequencies. Many separate modes are degenerate due to their symmetrical nature. Additionally }
 \end{table}
 
-The LGR in this work therefore consists of a central loop with radius $r_c = 4$ mm surrounded by four symmetrically arranged outer loops of radius $r_o = 3$ mm as shown in Figure \ref{LGR_drawing} (b). The outer loops return magnetic flux to the central loop and therefore oscillate antisymmetrically with the central loop ($\pi$ out of phase). The side walls of the capacitive gaps are separated by $d = 254$ $\upmu$m. With these dimensions, using equations \ref{indcap}, \ref{inductance}, and \ref{capacitance} yield $L = 8.7$ nH and $C = 0.17$ pF, resulting in an expected resonant frequency for the naked air-gapped LGR of $f_0 = 4.1$ GHz, approximately 1.2 GHz above the NV resonance frequencies. An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}. As mentioned above, for this mode the center loop oscillates $\pi$ radians out of phase with the outer loops. For the air-gapped resonator, HFSS returns a real eigenfrequency at 4.57 GHz (depicted in Figure \ref{LGR_Eigen} and Table \ref{eigenmodetable}) 
+The LGR in this work therefore consists of a central loop with radius $r_c = 4$ mm surrounded by four symmetrically arranged outer loops of radius $r_o = 3$ mm as shown in Figure \ref{LGR_drawing} (b). The outer loops return magnetic flux to the central loop and therefore oscillate antisymmetrically with the central loop ($\pi$ out of phase). The side walls of the capacitive gaps are separated by $d = 254$ $\upmu$m. With these dimensions, using equations \ref{indcap}, \ref{inductance}, and \ref{capacitance} yield $L = 8.7$ nH and $C = 0.17$ pF, resulting in an expected resonant frequency for the naked air-gapped LGR of $f_0 = 4.1$ GHz, approximately 1.2 GHz above the NV resonance frequencies. An eigenfrequency simulation of the resonator using the geometrical parameters listed above was completed in ANSYS HFSS and the distribution of the magnetic flux density ($B_1$) for the TE\textsubscript{10} mode is depicted in Figure \ref{LGR_Eigen}. As mentioned above, for this mode the center loop oscillates $\pi$ radians out of phase with the outer loops. The LGR however supports additional modes, some of which are depicted in Table \ref{eigenmodetable}. For the air-gapped resonator, HFSS returns a TE\textsubscript{10} real eigenfrequency at 4.57 GHz (depicted in Figure \ref{LGR_Eigen}). 
 
 The LGR is fabricated via wire electron discharge machining, which is well-suited for producing the tight tolerances and vertical side walls required for the narrow $d = 254 \upmu$m capacitive gaps. A titanium alloy (Ti-6Al-4V) was chosen as the resonator cavity material. The lower conductivity of this alloy compared to that of copper ($\sigma_{Ti} = 5.8 \times 10^{5}$ S/m vs. $\sigma_c = 59 \times 10^6$ S/m) allows for a broader resonance with a 3dB bandwidth $\Delta_{3dB} = 80$ MHz, sufficient to address all eight NV resonances for bias magnetic fields $B_0$ up to $\sim 20$ gauss. This 80 MHz bandwidth corresponds to a loaded quality factor $Q_L \equiv f_0/\Delta_{3dB} \approx 36$ when the LGR
 is critically coupled to the driving source (see section \ref{quality}). The LGR may be optionally fit with a radial access hole (for laser excitation of the NV ensemble) and three \# 2-56 mounting holes, which affix the LGR to an exciter antenna, discussed next.
@@ -179,7 +181,7 @@ available in semiconductor grade 50.8 mm diameter wafers, can be cut on standard
 
 \subsection{Excitation Design} \label{excitation}
 
-To couple MW power into the LGR we utilized two separate methods, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{LGR_Lateral} (a)] can be used to minimize the blocking of optical access to the central loop \cite{koskinen1992the}. Using this method, resonator coupling is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{LGR_Lateral} (b)]. Note that changing the coupling loop distance affects the mutual inductance between the shorted-loop and the resonator. As an undesired consequence, the resonant frequency of the total device shifts away from the frequency it was initially tuned to. A simple optimization process however, between shim placement and loop/LGR distance, can lead to the desired coupling at the targeted frequency.
+To couple MW power into the LGR two separate methods are utilized, each to be used for different NV applications. For magnetic  microscopy, complete 2$\pi$ steradian optical access to the center cavity is of the utmost importance. For such modalities lateral coupling using a shorted coaxial loop [Figure \ref{LGR_Lateral} (a)] can be used to minimize the blocking of optical access to the central loop \cite{koskinen1992the}. Using this method, resonator coupling is modified by changing the coaxial loop position in $z$ relative to the LGR. In this way the LGR can be quickly and effectively critically coupled for any shim configuration (ie. resonant frequency) [Figure \ref{LGR_Lateral} (b)]. Note that changing the coupling loop distance affects the mutual inductance between the shorted-loop and the resonator. As an undesired consequence, the resonant frequency of the total device shifts away from the frequency it was initially tuned to. A simple optimization process however, between shim placement and loop/LGR distance, can lead to the desired coupling at the targeted frequency.
 
 \begin{figure}[t!]
 \centering
@@ -199,10 +201,6 @@ The purpose of the second devised coupling method is to provide a mechanically s
 
 Differential driving of the balun mitigates common-mode noise on the two traces, which might otherwise couple to the split-ring resonator. A via shield along a portion of the balun helps reduce interference and cross-talk between traces, controls trace impedance, and reduces radiative losses along the balun's $\pi$ phase delay arm. The exciter antenna is fabricated from a 1oz. copper trace with immersion silver finish on a 1.524 mm thick dielectric substrate (Rogers RO4350B). Although the proximity of the split-ring resonator perturbs the field distribution inside the LGR, both simulations and measurements suggest this effect is minimal and not the dominant source of inhomogeneity (See section \ref{field}).  
 
-Although the microstrip balun is designed to match the feed-line and the split ring component of the exciter antenna at frequencies near 2.87 GHz, good matching is achieved from 2.5 GHz to 3.5 GHz as well. For drive frequencies between 2.5 and 3.5 GHz, the
-exciter antenna board couples more than 90\% of incident MW power into the LGR, as shown in Figure \ref{LGR_tuning} (a). For a specific fixed frequency, the impedance matching may be further optimized by inserting a stub tuner between the MW source and the exciter antenna board, as shown in Figure \ref{LGR_tuning} (b). The stub tuner changes the effective electrical length of the exciter circuit and therefore modifies the coupling between the split ring resonator and the LGR. Similar matching can be achieved using a varactor diode instead of a stub tuner. 
-
-
 \begin{figure}[t!]
 \centering
 \includegraphics[width = \textwidth]{Figure_2.pdf}  
@@ -212,7 +210,8 @@ a stub tuner, allowing practically all incident MW power to contribute to $B_1$.
 \label{LGR_tuning}
 \end{figure}
 
-\pagebreak
+Although the microstrip balun is designed to match the feed-line and the split ring component of the exciter antenna at frequencies near 2.87 GHz, good matching is achieved from 2.5 GHz to 3.5 GHz as well. For drive frequencies between 2.5 and 3.5 GHz, the
+exciter antenna board couples more than 90\% of incident MW power into the LGR, as shown in Figure \ref{LGR_tuning} (a). For a specific fixed frequency, the impedance matching may be further optimized by inserting a stub tuner between the MW source and the exciter antenna board, as shown in Figure \ref{LGR_tuning} (b). The stub tuner changes the effective electrical length of the exciter circuit and therefore modifies the coupling between the split ring resonator and the LGR. Similar matching can be achieved using a varactor diode instead of a stub tuner. 
 
 
 %More robust coupling for implementable device
@@ -228,14 +227,6 @@ a stub tuner, allowing practically all incident MW power to contribute to $B_1$.
 %\label{LGR_Eigen}
 %\end{figure}
 
-
-
-
-\section{Electric Field}
-
-One challenge that many MW solutions face is maintaining good coupling and a steady resonant frequency when a sample is introduced. For example, if a dielectric sample is placed on a planar resonator the dramatic change in capacitance between trace elements causes a shift in the resonant frequency \cite{bayat2014efficient, sasaki2016broadband, zhang2016microwave} of the oscillator. Just like planar fabricated resonators, the LGR is a lumped element device but its large size permits an improved spatial separation between the electric and magnetic fields in the cavity. The electric field in the TE\textsubscript{10} mode is confined to the capacitive gaps and thus has little interaction with a dielectric sample placed in the center cavity. In practice, fringing electric Fields from the capacitive gaps extend partially into the LGR's central loop as shown in Figure \ref{LGR_Electric}. However, at distances > 1 mm from the capacitive gaps, the electric Field magnitude |E| is decreased by >10x from the peak Field inside the capacitive gap. Consequently, insertion of a diamond (with
-$\epsilon_r \approx 5.7$ at 3 GHz \cite{ibarra1997wide}) beyond this region has little if any effect on the LGR resonant frequency $f_0$.
-
 \begin{figure}[t!]
 \centering
 \includegraphics[scale = 0.55]{Figure_B_1.pdf}  
@@ -243,6 +234,12 @@ $\epsilon_r \approx 5.7$ at 3 GHz \cite{ibarra1997wide}) beyond this region has 
 magnitude E as a function of distance from the capacitive gap with $x' = 0$ mm corresponding to the plane of the central loop-gap interface.}
 \label{LGR_Electric}
 \end{figure}
+
+
+\section{Electric Field}
+
+One challenge that many MW solutions face is maintaining good coupling and a steady resonant frequency when a sample is introduced. For example, if a dielectric sample is placed on a planar resonator the dramatic change in capacitance between trace elements causes a shift in the resonant frequency \cite{bayat2014efficient, sasaki2016broadband, zhang2016microwave} of the oscillator. Just like planar fabricated resonators, the LGR is a lumped element device but its large size permits an improved spatial separation between the electric and magnetic fields in the cavity. The electric field in the TE\textsubscript{10} mode is confined to the capacitive gaps and thus has little interaction with a dielectric sample placed in the center cavity. In practice, fringing electric Fields from the capacitive gaps extend partially into the LGR's central loop as shown in Figure \ref{LGR_Electric}. However, at distances > 1 mm from the capacitive gaps, the electric Field magnitude |E| is decreased by >10x from the peak Field inside the capacitive gap. Consequently, insertion of a diamond (with
+$\epsilon_r \approx 5.7$ at 3 GHz \cite{ibarra1997wide}) beyond this region has little if any effect on the LGR resonant frequency $f_0$.
 
 %\begin{figure}[h!]
 %\centering
